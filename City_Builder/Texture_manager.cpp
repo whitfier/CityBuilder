@@ -10,7 +10,7 @@
 
 using std::runtime_error;
 
-void Texture_manager::loadTexture(const std::string& name, const std::string& filename) {
+void Texture_manager::load_texture(const std::string& name, const std::string& filename) {
     // Load the texture
     sf::Texture tex;
     tex.loadFromFile(filename);
@@ -19,7 +19,7 @@ void Texture_manager::loadTexture(const std::string& name, const std::string& fi
     textures[name] = tex;
 }
 
-sf::Texture& Texture_manager::getRef(const std::string& texture)
+sf::Texture& Texture_manager::get_ref(const std::string& texture)
 {
     auto texture_it = textures.find(texture);
     if (texture_it == textures.end())

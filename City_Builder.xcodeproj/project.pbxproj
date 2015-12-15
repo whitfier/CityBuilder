@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94AFCE971C1F7921002DDF3C /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = 94AFCE901C1F7921002DDF3C /* water.png */; };
+		94AFCE981C1F7921002DDF3C /* road.png in Resources */ = {isa = PBXBuildFile; fileRef = 94AFCE911C1F7921002DDF3C /* road.png */; };
+		94AFCE991C1F7921002DDF3C /* residential.png in Resources */ = {isa = PBXBuildFile; fileRef = 94AFCE921C1F7921002DDF3C /* residential.png */; };
+		94AFCE9A1C1F7921002DDF3C /* industrial.png in Resources */ = {isa = PBXBuildFile; fileRef = 94AFCE931C1F7921002DDF3C /* industrial.png */; };
+		94AFCE9B1C1F7921002DDF3C /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = 94AFCE941C1F7921002DDF3C /* grass.png */; };
+		94AFCE9C1C1F7921002DDF3C /* forest.png in Resources */ = {isa = PBXBuildFile; fileRef = 94AFCE951C1F7921002DDF3C /* forest.png */; };
+		94AFCE9D1C1F7921002DDF3C /* commercial.png in Resources */ = {isa = PBXBuildFile; fileRef = 94AFCE961C1F7921002DDF3C /* commercial.png */; };
+		94AFCEA01C1F7942002DDF3C /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94AFCE9E1C1F7942002DDF3C /* Map.cpp */; };
 		94B501721C1EBDFB00816866 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94B501711C1EBDFB00816866 /* Game.cpp */; };
 		94B501981C1EC18A00816866 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94B501971C1EC18A00816866 /* main.cpp */; };
 		94B5019E1C1EC38C00816866 /* Game_state_start.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94B5019D1C1EC38C00816866 /* Game_state_start.cpp */; };
@@ -14,9 +22,19 @@
 		94B501A31C1ECA9A00816866 /* Texture_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94B501A21C1ECA9A00816866 /* Texture_manager.cpp */; };
 		94B501A71C1ECFAC00816866 /* Animation_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94B501A61C1ECFAC00816866 /* Animation_handler.cpp */; };
 		94B501AA1C1ED3D800816866 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 94B501A91C1ED3D800816866 /* background.png */; };
+		94C7F9281C1F684B00F57FBE /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94C7F9261C1F684B00F57FBE /* Tile.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		94AFCE901C1F7921002DDF3C /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
+		94AFCE911C1F7921002DDF3C /* road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = road.png; sourceTree = "<group>"; };
+		94AFCE921C1F7921002DDF3C /* residential.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = residential.png; sourceTree = "<group>"; };
+		94AFCE931C1F7921002DDF3C /* industrial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = industrial.png; sourceTree = "<group>"; };
+		94AFCE941C1F7921002DDF3C /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
+		94AFCE951C1F7921002DDF3C /* forest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forest.png; sourceTree = "<group>"; };
+		94AFCE961C1F7921002DDF3C /* commercial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commercial.png; sourceTree = "<group>"; };
+		94AFCE9E1C1F7942002DDF3C /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
+		94AFCE9F1C1F7942002DDF3C /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
 		94B501561C1EB85800816866 /* City_Builder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = City_Builder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B5016E1C1EBB8E00816866 /* Game_state.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Game_state.h; sourceTree = "<group>"; };
 		94B501701C1EBC6000816866 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
@@ -33,6 +51,8 @@
 		94B501A51C1ECF5000816866 /* Animation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		94B501A61C1ECFAC00816866 /* Animation_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Animation_handler.cpp; sourceTree = "<group>"; };
 		94B501A91C1ED3D800816866 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		94C7F9261C1F684B00F57FBE /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tile.cpp; sourceTree = "<group>"; };
+		94C7F9271C1F684B00F57FBE /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +100,11 @@
 				94B501A41C1ECD6000816866 /* Animation_handler.h */,
 				94B501701C1EBC6000816866 /* Game.h */,
 				94B5016E1C1EBB8E00816866 /* Game_state.h */,
-				94B5019B1C1EC20C00816866 /* Game_state_start.h */,
 				94B5019C1C1EC2D800816866 /* Game_state_editor.h */,
+				94B5019B1C1EC20C00816866 /* Game_state_start.h */,
+				94AFCE9F1C1F7942002DDF3C /* Map.h */,
 				94B501A11C1ECA0600816866 /* Texture_manager.h */,
+				94C7F9271C1F684B00F57FBE /* Tile.h */,
 			);
 			name = include;
 			sourceTree = "<group>";
@@ -95,7 +117,9 @@
 				94B5019F1C1EC76E00816866 /* Game_state_editor.cpp */,
 				94B5019D1C1EC38C00816866 /* Game_state_start.cpp */,
 				94B501971C1EC18A00816866 /* main.cpp */,
+				94AFCE9E1C1F7942002DDF3C /* Map.cpp */,
 				94B501A21C1ECA9A00816866 /* Texture_manager.cpp */,
+				94C7F9261C1F684B00F57FBE /* Tile.cpp */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -103,6 +127,13 @@
 		94B501A81C1ED3D800816866 /* media */ = {
 			isa = PBXGroup;
 			children = (
+				94AFCE901C1F7921002DDF3C /* water.png */,
+				94AFCE911C1F7921002DDF3C /* road.png */,
+				94AFCE921C1F7921002DDF3C /* residential.png */,
+				94AFCE931C1F7921002DDF3C /* industrial.png */,
+				94AFCE941C1F7921002DDF3C /* grass.png */,
+				94AFCE951C1F7921002DDF3C /* forest.png */,
+				94AFCE961C1F7921002DDF3C /* commercial.png */,
 				94B501A91C1ED3D800816866 /* background.png */,
 			);
 			path = media;
@@ -165,7 +196,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94AFCE9C1C1F7921002DDF3C /* forest.png in Resources */,
+				94AFCE9B1C1F7921002DDF3C /* grass.png in Resources */,
 				94B501AA1C1ED3D800816866 /* background.png in Resources */,
+				94AFCE971C1F7921002DDF3C /* water.png in Resources */,
+				94AFCE991C1F7921002DDF3C /* residential.png in Resources */,
+				94AFCE9D1C1F7921002DDF3C /* commercial.png in Resources */,
+				94AFCE9A1C1F7921002DDF3C /* industrial.png in Resources */,
+				94AFCE981C1F7921002DDF3C /* road.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +236,8 @@
 				94B501A01C1EC76E00816866 /* Game_state_editor.cpp in Sources */,
 				94B5019E1C1EC38C00816866 /* Game_state_start.cpp in Sources */,
 				94B501A71C1ECFAC00816866 /* Animation_handler.cpp in Sources */,
+				94AFCEA01C1F7942002DDF3C /* Map.cpp in Sources */,
+				94C7F9281C1F684B00F57FBE /* Tile.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +375,7 @@
 				94B5016D1C1EB85800816866 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

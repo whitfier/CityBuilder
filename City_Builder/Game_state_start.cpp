@@ -38,11 +38,11 @@ void Game_state_start::handle_input() {
 
     while(game_ptr->window.pollEvent(event)) {
         switch(event.type) {
-            /* Close the window */
+            // Close the window
             case sf::Event::Closed:
                 game_ptr->window.close();
                 break;
-            /* Resize the window */
+            // Resize the window
             case sf::Event::Resized:
                 view.setSize(event.size.width, event.size.height);
                 game_ptr->background.setPosition(game_ptr->window.mapPixelToCoords(sf::Vector2i(0, 0)));

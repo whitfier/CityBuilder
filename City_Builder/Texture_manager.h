@@ -15,10 +15,10 @@
 class Texture_manager {
 public:
     // Add a texture from a file
-    void loadTexture(const std::string& name, const std::string& filename);
+    void load_texture(const std::string& name, const std::string& filename);
     
     // Translate an id into a reference
-    sf::Texture& getRef(const std::string& texture);
+    sf::Texture& get_ref(const std::string& texture);
     
 private:
     std::map<std::string, sf::Texture> textures;

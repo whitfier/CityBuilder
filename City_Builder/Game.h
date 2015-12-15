@@ -10,8 +10,10 @@
 #define Game_h
 
 #include "Texture_manager.h"
-#include <stack>
+#include "Tile.h"
 #include <SFML/Graphics.hpp>
+#include <stack>
+#include <map>
 
 class Game_state;
 
@@ -29,13 +31,17 @@ public:
     // main game loop
     void game_loop();
     
+    // Public variables (EW!)
     sf::RenderWindow window;
     std::stack<std::shared_ptr<Game_state>> states;
     Texture_manager texture_mgr;
     sf::Sprite background;
+    const static int tile_size = 8;
+    std::map<std::string, Tile> tile_atlas;
     
 private:
     void load_textures();
+    void load_tiles();
 };
 
 #endif /* Game_h */
