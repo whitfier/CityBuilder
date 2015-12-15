@@ -116,11 +116,9 @@ void Game::load_fonts() {
 
 void Game::load_style_sheets() {
     stylesheets["button"] = GUI_style(&fonts.at("main_font"), 1,
-                                      sf::Color(0xc6,0xc6,0xc6), sf::Color(0x94,0x94,0x94),
-                                      sf::Color(0x00,0x00,0x00), sf::Color(0x61,0x61,0x61),
-                                      sf::Color(0x94,0x94,0x94), sf::Color(0x00,0x00,0x00));
+                                      sf::Color::White, sf::Color::Black, sf::Color::Black,
+                                      sf::Color::White, sf::Color(0,153,0), sf::Color(0,153,0));
     stylesheets["text"] = GUI_style(&fonts.at("main_font"), 0,
-                                    sf::Color(0x00,0x00,0x00,0x00), sf::Color(0x00,0x00,0x00),
-                                    sf::Color(0xff,0xff,0xff), sf::Color(0x00,0x00,0x00,0x00),
-                                    sf::Color(0x00,0x00,0x00), sf::Color(0xff,0x00,0x00));
+                                    sf::Color(0x00,0x00,0x00,0x00), sf::Color(0x00,0x00,0x00), sf::Color(0xff,0xff,0xff),
+                                    sf::Color(0x00,0x00,0x00,0x00), sf::Color(0x00,0x00,0x00), sf::Color(0xff,0x00,0x00));
 }

@@ -13,11 +13,19 @@
 
 struct GUI_style {
     GUI_style() {}
-    GUI_style(sf::Font* font_, float borderSize,sf::Color bodyCol,
-              sf::Color borderCol, sf::Color textCol,sf::Color bodyHighlightCol,
-              sf::Color borderHighlightCol, sf::Color textHighlightCol)
-    : body_col(bodyCol), border_col(borderCol), text_col(textCol), border_highlight_col(bodyHighlightCol),
-        text_highlight_col(textHighlightCol), font(font_), border_size(borderSize) {}
+    GUI_style(sf::Font* font_, float borderSize,
+             sf::Color bodyCol, sf::Color borderCol, sf::Color textCol,
+             sf::Color bodyHighlightCol, sf::Color borderHighlightCol, sf::Color textHighlightCol)
+    {
+        body_col = bodyCol;
+        border_col = borderCol;
+        text_col = textCol;
+        body_highlight_col = bodyHighlightCol;
+        border_highlight_col = borderHighlightCol;
+        text_highlight_col = textHighlightCol;
+        font = font_;
+        border_size = borderSize;
+    }
     
     sf::Color body_col;
     sf::Color body_highlight_col;
