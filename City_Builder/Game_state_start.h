@@ -10,6 +10,7 @@
 #define Game_state_start_h
 
 #include "Game_state.h"
+#include "GUI.h"
 #include <SFML/Graphics.hpp>
 
 class Game_state_start : public Game_state {
@@ -24,6 +25,7 @@ public:
     
 private:
     sf::View view;
+    std::map<std::string, GUI> gui_system;
     void load_game();
 };
 

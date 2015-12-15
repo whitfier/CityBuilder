@@ -16,6 +16,8 @@ using std::shared_ptr; using std::make_pair;
 Game::Game() {
     load_textures();
     load_tiles();
+    load_fonts();
+    load_style_sheets();
     window.create(sf::VideoMode(800, 600), "City Builder");
     window.setFramerateLimit(60);
     background.setTexture(texture_mgr.get_ref("background"));
@@ -104,4 +106,21 @@ void Game::load_tiles() {
                                                  {static_anim, static_anim, static_anim,static_anim, static_anim,
                                                      static_anim,static_anim, static_anim, static_anim,static_anim, static_anim},
                                                  Tile_type_e::ROAD, 100, 0, 1)));
+}
+
+void Game::load_fonts() {
+    sf::Font font;
+    font.loadFromFile("media/font.ttf");
+    fonts["main_font"] = font;
+}
+
+void Game::load_style_sheets() {
+    stylesheets["button"] = GUI_style(&fonts.at("main_font"), 1,
+                                      sf::Color(0xc6,0xc6,0xc6), sf::Color(0x94,0x94,0x94),
+                                      sf::Color(0x00,0x00,0x00), sf::Color(0x61,0x61,0x61),
+                                      sf::Color(0x94,0x94,0x94), sf::Color(0x00,0x00,0x00));
+    stylesheets["text"] = GUI_style(&fonts.at("main_font"), 0,
+                                    sf::Color(0x00,0x00,0x00,0x00), sf::Color(0x00,0x00,0x00),
+                                    sf::Color(0xff,0xff,0xff), sf::Color(0x00,0x00,0x00,0x00),
+                                    sf::Color(0x00,0x00,0x00), sf::Color(0xff,0x00,0x00));
 }
