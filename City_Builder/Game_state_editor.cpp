@@ -74,9 +74,9 @@ void Game_state_editor::update(const float dt)
     /* Update the info bar at the bottom of the screen */
     gui_system.at("infoBar").set_entry_text(0, "Day: " + std::to_string(city.day));
     gui_system.at("infoBar").set_entry_text(1, "$" + std::to_string(long(city.funds)));
-    gui_system.at("infoBar").set_entry_text(2, std::to_string(long(city.population)) + " (" + std::to_string(long(city.get_homeless())) + ")");
-    gui_system.at("infoBar").set_entry_text(3, std::to_string(long(city.employable)) + " (" + std::to_string(long(city.get_unemployed())) + ")");
-    gui_system.at("infoBar").set_entry_text(4, tile_type_to_str(current_tile->tile_type));
+    gui_system.at("infoBar").set_entry_text(2, "Population: " + std::to_string(long(city.population)) + " (" + std::to_string(long(city.get_homeless())) + ")");
+    gui_system.at("infoBar").set_entry_text(3, "Employees: " + std::to_string(long(city.employable)) + " (" + std::to_string(long(city.get_unemployed())) + ")");
+    gui_system.at("infoBar").set_entry_text(4, "Tool: " + tile_type_to_str(current_tile->tile_type));
     
     /* Highlight entries of the right click context menu */
     gui_system.at("rightClickMenu").highlight(gui_system.at("rightClickMenu").get_entry(get_game_ptr()->window.mapPixelToCoords(sf::Mouse::getPosition(get_game_ptr()->window), gui_view)));

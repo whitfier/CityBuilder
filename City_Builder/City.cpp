@@ -94,15 +94,15 @@ void City::load(std::string cityName, std::map<std::string, Tile>& tileAtlas) {
                 if (key == "width")                 width           = std::stoi(value);
                 else if (key == "height")           height          = std::stoi(value);
                 else if (key == "day")              day             = std::stoi(value);
-                else if (key == "population_pool")   population_pool = std::stod(value);
-                else if (key == "employmentPool")   employment_pool = std::stod(value);
+                else if (key == "population_pool")  population_pool = std::stod(value);
+                else if (key == "employment_pool")  employment_pool = std::stod(value);
                 else if (key == "population")       population      = std::stod(value);
                 else if (key == "employable")       employable      = std::stod(value);
-                else if (key == "birthRate")        birth_rate      = std::stod(value);
-                else if (key == "deathRate")        death_rate      = std::stod(value);
-                else if (key == "residentialTax")   residential_tax = std::stod(value);
-                else if (key == "commercialTax")    commercial_tax  = std::stod(value);
-                else if (key == "industrialTax")    industrial_tax  = std::stod(value);
+                else if (key == "birth_rate")       birth_rate      = std::stod(value);
+                else if (key == "death_rate")       death_rate      = std::stod(value);
+                else if (key == "residential_tax")  residential_tax = std::stod(value);
+                else if (key == "commercial_tax")   commercial_tax  = std::stod(value);
+                else if (key == "industrial_tax")   industrial_tax  = std::stod(value);
                 else if (key == "funds")            funds           = std::stod(value);
                 else if (key == "earnings")         earnings        = std::stod(value);
             }
@@ -123,15 +123,15 @@ void City::save(std::string cityName) {
     outputFile << "width="          << map.width        << std::endl;
     outputFile << "height="         << map.height       << std::endl;
     outputFile << "day="            << day              << std::endl;
-    outputFile << "population_pool=" << population_pool  << std::endl;
-    outputFile << "employmentPool=" << employment_pool  << std::endl;
+    outputFile << "population_pool="<< population_pool  << std::endl;
+    outputFile << "employment_pool="<< employment_pool  << std::endl;
     outputFile << "population="     << population       << std::endl;
     outputFile << "employable="     << employable       << std::endl;
-    outputFile << "birthRate="      << birth_rate       << std::endl;
-    outputFile << "deathRate="      << death_rate       << std::endl;
-    outputFile << "residentialTax=" << residential_tax  << std::endl;
-    outputFile << "commercialTax="  << commercial_tax   << std::endl;
-    outputFile << "industrialTax="  << industrial_tax   << std::endl;
+    outputFile << "birth_rate="     << birth_rate       << std::endl;
+    outputFile << "death_rate="     << death_rate       << std::endl;
+    outputFile << "residential_tax="<< residential_tax  << std::endl;
+    outputFile << "commercial_tax=" << commercial_tax   << std::endl;
+    outputFile << "industrial_tax=" << industrial_tax   << std::endl;
     outputFile << "funds="          << funds            << std::endl;
     outputFile << "earnings="       << earnings         << std::endl;
     
@@ -181,7 +181,6 @@ void City::update(float dt) {
             if (rand() % 100 < 15 * (1.0-industrial_tax))
                 distributePool(employment_pool, tile, 0.0);
         }
-        
         tile.update();
     }
     
