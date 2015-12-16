@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9435C9CB1C213D4F0086C0A8 /* font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9435C9CA1C213D4F0086C0A8 /* font.ttf */; };
+		9435C9CD1C213E230086C0A8 /* city_cfg.dat in Resources */ = {isa = PBXBuildFile; fileRef = 9435C9CC1C213E230086C0A8 /* city_cfg.dat */; };
+		9435C9CF1C213E2A0086C0A8 /* city_map.dat in Resources */ = {isa = PBXBuildFile; fileRef = 9435C9CE1C213E2A0086C0A8 /* city_map.dat */; };
 		94AFCE971C1F7921002DDF3C /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = 94AFCE901C1F7921002DDF3C /* water.png */; };
 		94AFCE981C1F7921002DDF3C /* road.png in Resources */ = {isa = PBXBuildFile; fileRef = 94AFCE911C1F7921002DDF3C /* road.png */; };
 		94AFCE991C1F7921002DDF3C /* residential.png in Resources */ = {isa = PBXBuildFile; fileRef = 94AFCE921C1F7921002DDF3C /* residential.png */; };
@@ -30,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		9435C9CA1C213D4F0086C0A8 /* font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = font.ttf; sourceTree = "<group>"; };
+		9435C9CC1C213E230086C0A8 /* city_cfg.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = city_cfg.dat; sourceTree = "<group>"; };
+		9435C9CE1C213E2A0086C0A8 /* city_map.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = city_map.dat; sourceTree = "<group>"; };
 		94AFCE901C1F7921002DDF3C /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
 		94AFCE911C1F7921002DDF3C /* road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = road.png; sourceTree = "<group>"; };
 		94AFCE921C1F7921002DDF3C /* residential.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = residential.png; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 		94B501581C1EB85800816866 /* City_Builder */ = {
 			isa = PBXGroup;
 			children = (
+				9435C9CE1C213E2A0086C0A8 /* city_map.dat */,
+				9435C9CC1C213E230086C0A8 /* city_cfg.dat */,
 				94B501A81C1ED3D800816866 /* media */,
 				94B501991C1EC1E500816866 /* include */,
 				94B5019A1C1EC1ED00816866 /* src */,
@@ -216,8 +222,10 @@
 				94AFCE991C1F7921002DDF3C /* residential.png in Resources */,
 				94AFCE9D1C1F7921002DDF3C /* commercial.png in Resources */,
 				94AFCE9A1C1F7921002DDF3C /* industrial.png in Resources */,
+				9435C9CF1C213E2A0086C0A8 /* city_map.dat in Resources */,
 				94AFCE981C1F7921002DDF3C /* road.png in Resources */,
 				9435C9CB1C213D4F0086C0A8 /* font.ttf in Resources */,
+				9435C9CD1C213E230086C0A8 /* city_cfg.dat in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
