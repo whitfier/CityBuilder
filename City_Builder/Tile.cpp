@@ -29,7 +29,7 @@ void Tile::update() {
      * there is a small chance that the tile will increase its
      * building stage */
     if((tile_type == Tile_type_e::RESIDENTIAL || tile_type == Tile_type_e::COMMERCIAL || tile_type == Tile_type_e::INDUSTRIAL)
-       && population == max_pop_per_level * (tile_variant+1)
+       && int(population) == max_pop_per_level * (tile_variant+1)
        && tile_variant < max_levels)
     {
         if((rand() % 10000) < (1000 / (tile_variant + 1)))

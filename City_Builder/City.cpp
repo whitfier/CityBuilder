@@ -20,7 +20,7 @@ double City::distributePool(double& pool, Tile& tile, double rate = 0.0) {
     
     // If there is room in the zone, move up to 4 people from the pool into the zone
     if (pool > 0) {
-        int moving = max_pop - tile.population;
+        int moving = max_pop - int(tile.population);
         
         if (moving > moveRate)
             moving = moveRate;
@@ -35,9 +35,10 @@ double City::distributePool(double& pool, Tile& tile, double rate = 0.0) {
     tile.population += tile.population * rate;
     
     // Move population that cannot be sustained by the tile into the pool
-    if (tile.population > max_pop) {
-        pool += tile.population - max_pop;
-        tile.population = max_pop;
+    int overflow = int(tile.population) - max_pop;
+    if (overflow > 0) {
+        pool += overflow;
+        tile.population -= overflow;
     }
     
     return tile.population;

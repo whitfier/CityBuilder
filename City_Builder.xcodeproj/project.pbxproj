@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9435C9CB1C213D4F0086C0A8 /* font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9435C9CA1C213D4F0086C0A8 /* font.ttf */; };
 		94AFCE971C1F7921002DDF3C /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = 94AFCE901C1F7921002DDF3C /* water.png */; };
 		94AFCE981C1F7921002DDF3C /* road.png in Resources */ = {isa = PBXBuildFile; fileRef = 94AFCE911C1F7921002DDF3C /* road.png */; };
 		94AFCE991C1F7921002DDF3C /* residential.png in Resources */ = {isa = PBXBuildFile; fileRef = 94AFCE921C1F7921002DDF3C /* residential.png */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9435C9CA1C213D4F0086C0A8 /* font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = font.ttf; sourceTree = "<group>"; };
 		94AFCE901C1F7921002DDF3C /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
 		94AFCE911C1F7921002DDF3C /* road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = road.png; sourceTree = "<group>"; };
 		94AFCE921C1F7921002DDF3C /* residential.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = residential.png; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		94B501A81C1ED3D800816866 /* media */ = {
 			isa = PBXGroup;
 			children = (
+				9435C9CA1C213D4F0086C0A8 /* font.ttf */,
 				94AFCE901C1F7921002DDF3C /* water.png */,
 				94AFCE911C1F7921002DDF3C /* road.png */,
 				94AFCE921C1F7921002DDF3C /* residential.png */,
@@ -214,6 +217,7 @@
 				94AFCE9D1C1F7921002DDF3C /* commercial.png in Resources */,
 				94AFCE9A1C1F7921002DDF3C /* industrial.png in Resources */,
 				94AFCE981C1F7921002DDF3C /* road.png in Resources */,
+				9435C9CB1C213D4F0086C0A8 /* font.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
