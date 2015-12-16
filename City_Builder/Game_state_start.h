@@ -26,7 +26,7 @@ public:
 private:
     sf::View view;
     std::map<std::string, GUI> gui_system;
-    void load_game();
+    void load_game(bool new_game);
 };
 
 #endif /* Game_state_start_h */

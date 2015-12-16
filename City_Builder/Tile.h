@@ -40,7 +40,7 @@ public:
     void draw(sf::RenderWindow& window, float dt);
     
     void update();
-    
+
     // Return a string containing the display cost of the tile
     std::string get_cost() {return std::to_string(cost);}
 

@@ -29,16 +29,20 @@ public:
                 time_per_day(1.0),
                 day(0) {}
     
-    City(std::string cityName, int tileSize, std::map<std::string, Tile>& tileAtlas) : City()
+    City(std::string cityName, int tileSize, std::map<std::string, Tile>& tileAtlas, bool new_game) : City()
     {
         map.tile_size = tileSize;
-        load(cityName, tileAtlas);
+		if (new_game)
+			load("default", tileAtlas);
+        else
+			load(cityName, tileAtlas);
     }
     
     void load(std::string cityName, std::map<std::string, Tile>& tileAtlas);
     void save(std::string cityName);
     
     void update(float dt);
+	void increase_tile(Tile* tile_ptr);
     void bulldoze(const Tile& tile);
     void shuffle_tiles();
     void tile_changed();

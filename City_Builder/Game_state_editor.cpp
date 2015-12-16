@@ -10,9 +10,11 @@
 #include "Game.h"
 #include <SFML/Graphics.hpp>
 
+#include <iostream>
+
 using std::shared_ptr;
 
-Game_state_editor::Game_state_editor(shared_ptr<Game> game_ptr)
+Game_state_editor::Game_state_editor(shared_ptr<Game> game_ptr, bool new_game)
 : Game_state(game_ptr), zoom_level(1.0f), action_state(Action_state_e::NONE),
     selection_start(0,0), selection_end(0,0), current_tile(&game_ptr->tile_atlas.at("grass"))
 {
@@ -22,7 +24,7 @@ Game_state_editor::Game_state_editor(shared_ptr<Game> game_ptr)
     pos *= 0.5f;
     gui_view.setCenter(pos);
     game_view.setCenter(pos);
-    city = City("city", game_ptr->tile_size, game_ptr->tile_atlas);
+    city = City("city", game_ptr->tile_size, game_ptr->tile_atlas, new_game);
     city.shuffle_tiles();
     
     // Center the camera on the map
@@ -70,15 +72,15 @@ void Game_state_editor::draw(const float dt) {
 void Game_state_editor::update(const float dt)
 {
     city.update(dt);
-    
-    /* Update the info bar at the bottom of the screen */
+
+    // Update the info bar at the bottom of the screen
     gui_system.at("infoBar").set_entry_text(0, "Day: " + std::to_string(city.day));
     gui_system.at("infoBar").set_entry_text(1, "$" + std::to_string(long(city.funds)));
     gui_system.at("infoBar").set_entry_text(2, "Population: " + std::to_string(long(city.population)) + " (" + std::to_string(long(city.get_homeless())) + ")");
     gui_system.at("infoBar").set_entry_text(3, "Employees: " + std::to_string(long(city.employable)) + " (" + std::to_string(long(city.get_unemployed())) + ")");
     gui_system.at("infoBar").set_entry_text(4, "Tool: " + tile_type_to_str(current_tile->tile_type));
     
-    /* Highlight entries of the right click context menu */
+    // Highlight entries of the right click context menu
     gui_system.at("rightClickMenu").highlight(gui_system.at("rightClickMenu").get_entry(get_game_ptr()->window.mapPixelToCoords(sf::Mouse::getPosition(get_game_ptr()->window), gui_view)));
 }
 
@@ -93,6 +95,7 @@ void Game_state_editor::handle_input() {
         switch(event.type) {
             // Close the window
             case sf::Event::Closed:
+				city.save("city");
                 game_ptr->window.close();
                 break;
             // Resize the window
@@ -108,22 +111,24 @@ void Game_state_editor::handle_input() {
                                               float(event.size.height) / float(game_ptr->background.getTexture()->getSize().y));
                 break;
             case sf::Event::MouseMoved:
+				city.map.clear_selected();
+
                 // Pan the camera
                 if(action_state == Action_state_e::PANNING) {
                     sf::Vector2f pos = sf::Vector2f(sf::Mouse::getPosition(game_ptr->window) - panning_anchor);
                     game_view.move(-1.0f * pos * zoom_level);
                     panning_anchor = sf::Mouse::getPosition(game_ptr->window);
                 }
+
                 
                 // Selecting tiles
                 else if (action_state == Action_state_e::SELECTING) {
-                    sf::Vector2f pos = game_ptr->window.mapPixelToCoords(sf::Mouse::getPosition(game_ptr->window), game_view);
-                    selection_end.x = pos.y / (city.map.tile_size)
-                        + pos.x / (2 * city.map.tile_size) - city.map.width * 0.5 - 0.5;
-                    selection_end.y = pos.y / (city.map.tile_size)
-                        - pos.x / (2 * city.map.tile_size) + city.map.width * 0.5 + 0.5;
+                    selection_end_pos = game_ptr->window.mapPixelToCoords(sf::Mouse::getPosition(game_ptr->window), game_view);
+                    selection_end.x = selection_end_pos.y / (city.map.tile_size)
+                        + selection_end_pos.x / (2 * city.map.tile_size) - city.map.width * 0.5 - 0.5;
+                    selection_end.y = selection_end_pos.y / (city.map.tile_size)
+                        - selection_end_pos.x / (2 * city.map.tile_size) + city.map.width * 0.5 + 0.5;
                     
-                    city.map.clear_selected();
                     if(current_tile->tile_type == Tile_type_e::GRASS) {
                         city.map.select(selection_start, selection_end, {current_tile->tile_type, Tile_type_e::WATER});
                     }
@@ -146,6 +151,14 @@ void Game_state_editor::handle_input() {
                     gui_system.at("selectionCostText").setPosition(gui_pos + sf::Vector2f(16, -16));
                     gui_system.at("selectionCostText").show();
                 }
+				else {
+					auto pos = game_ptr->window.mapPixelToCoords(sf::Mouse::getPosition(game_ptr->window), game_view);
+					sf::Vector2i tile_pos;
+					tile_pos.x = pos.y / (city.map.tile_size) + pos.x / (2 * city.map.tile_size) - city.map.width * 0.5 - 0.5;
+					tile_pos.y = pos.y / (city.map.tile_size) - pos.x / (2 * city.map.tile_size) + city.map.width * 0.5 + 0.5;
+
+					city.map.highlight_tile(tile_pos);
+				}
                 /* Highlight entries of the right click context menu */
                 gui_system.at("rightClickMenu").highlight(gui_system.at("rightClickMenu").get_entry(gui_pos));
                 break;
@@ -172,9 +185,9 @@ void Game_state_editor::handle_input() {
                         // Select map tile
                         if(action_state != Action_state_e::SELECTING) {
                             action_state = Action_state_e::SELECTING;
-                            sf::Vector2f pos = game_ptr->window.mapPixelToCoords(sf::Mouse::getPosition(game_ptr->window), game_view);
-                            selection_start.x = pos.y / (city.map.tile_size) + pos.x / (2 * city.map.tile_size) - city.map.width * 0.5 - 0.5;
-                            selection_start.y = pos.y / (city.map.tile_size) - pos.x / (2 * city.map.tile_size) + city.map.width * 0.5 + 0.5;
+                            selection_start_pos = game_ptr->window.mapPixelToCoords(sf::Mouse::getPosition(game_ptr->window), game_view);
+                            selection_start.x = selection_start_pos.y / (city.map.tile_size) + selection_start_pos.x / (2 * city.map.tile_size) - city.map.width * 0.5 - 0.5;
+                            selection_start.y = selection_start_pos.y / (city.map.tile_size) - selection_start_pos.x / (2 * city.map.tile_size) + city.map.width * 0.5 + 0.5;
                         }
                     }
                     
@@ -201,15 +214,22 @@ void Game_state_editor::handle_input() {
                     }
                 }
                 break;
-            case sf::Event::KeyPressed:
-                // Start panning
-                if (event.key.code == sf::Keyboard::LAlt) {
-                    if(action_state != Action_state_e::PANNING) {
-                        action_state = Action_state_e::PANNING;
-                        panning_anchor = sf::Mouse::getPosition(game_ptr->window);
-                    }
-                }
-                break;
+			case sf::Event::KeyPressed: {
+				// Start panning
+				if (event.key.code == sf::Keyboard::LAlt) {
+					if (action_state != Action_state_e::PANNING) {
+						action_state = Action_state_e::PANNING;
+						panning_anchor = sf::Mouse::getPosition(game_ptr->window);
+					}
+				}
+				// Center the camera on the map
+				if (event.key.code == sf::Keyboard::Space) {
+					sf::Vector2f center(city.map.width, city.map.height * 0.5);
+					center *= float(city.map.tile_size);
+					game_view.setCenter(center);
+				}
+				break;
+			}
             case sf::Event::MouseButtonReleased:
                 // Stop panning
                 if(event.mouseButton.button == sf::Mouse::Middle)
@@ -217,18 +237,32 @@ void Game_state_editor::handle_input() {
                 // Stop selecting
                 else if(event.mouseButton.button == sf::Mouse::Left) {
                     if(action_state == Action_state_e::SELECTING) {
-                        // Replace tiles if enough funds and a tile is selected
-                        if(current_tile != nullptr) {
-                            unsigned int cost = current_tile->cost * city.map.numSelected;
-                            if(city.funds >= cost) {
-                                city.bulldoze(*current_tile);
-                                city.funds -= current_tile->cost * city.map.numSelected;
-                                city.tile_changed();
-                            }
-                        }
-                        gui_system.at("selectionCostText").hide();
-                        action_state = Action_state_e::NONE;
-                        city.map.clear_selected();
+						selection_end_pos = game_ptr->window.mapPixelToCoords(sf::Mouse::getPosition(game_ptr->window), game_view);
+						selection_end.x = selection_end_pos.y / (city.map.tile_size)
+							+ selection_end_pos.x / (2 * city.map.tile_size) - city.map.width * 0.5 - 0.5;
+						selection_end.y = selection_end_pos.y / (city.map.tile_size)
+							- selection_end_pos.x / (2 * city.map.tile_size) + city.map.width * 0.5 + 0.5;
+						if (selection_end_pos == selection_start_pos) {
+							auto tile_ptr = city.map.select(selection_end);
+							if (tile_ptr->tile_type == Tile_type_e::RESIDENTIAL) {
+								// Increase population
+								city.increase_tile(tile_ptr);
+							}
+						}
+						else {
+							// Replace tiles if enough funds and a tile is selected
+							if (current_tile != nullptr) {
+								unsigned int cost = current_tile->cost * city.map.numSelected;
+								if (city.funds >= cost) {
+									city.bulldoze(*current_tile);
+									city.funds -= current_tile->cost * city.map.numSelected;
+									city.tile_changed();
+								}
+							}
+							city.map.clear_selected();
+						}
+						gui_system.at("selectionCostText").hide();
+						action_state = Action_state_e::NONE;
                     }
                 }
                 break;

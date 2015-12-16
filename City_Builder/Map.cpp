@@ -8,6 +8,7 @@
 
 #include "Map.h"
 #include <fstream>
+#include <iostream>
 
 // Load map from disk
 void Map::load(const std::string& filename, unsigned int width_, unsigned int height_,
@@ -271,4 +272,28 @@ void Map::select(sf::Vector2i start, sf::Vector2i end, std::vector<Tile_type_e> 
             }
         }
     }
+}
+
+Tile* Map::select(sf::Vector2i pos) {
+	if (pos.x >= width)
+		pos.x = width - 1;
+	else if (pos.x < 0)
+		pos.x = 0;
+
+	if (pos.y >= height)
+		pos.y = height - 1;
+	else if (pos.y < 0)
+		pos.y = 0;
+	return &tiles[pos.y * width + pos.x];
+}
+
+void Map::highlight_tile(sf::Vector2i pos) {
+	std::cout << pos.x << " " << pos.y << std::endl;
+	if (pos.x >= width
+		|| (pos.x < 0)
+		|| (pos.y >= height)
+		|| (pos.y < 0))
+		return;
+	selected[pos.y * width + pos.x] = 1;
+	tiles[pos.y * width + pos.x].sprite.setColor(sf::Color(0x7d, 0x7d, 0x7d));
 }

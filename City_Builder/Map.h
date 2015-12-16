@@ -45,6 +45,11 @@ public:
     // Select the tiles within the bounds
     void select(sf::Vector2i start, sf::Vector2i end, std::vector<Tile_type_e> blacklist);
     
+	// Select one tile
+	Tile* select(sf::Vector2i pos);
+
+	void highlight_tile(sf::Vector2i pos);
+
     // Deselect all tiles
     void clear_selected();
     

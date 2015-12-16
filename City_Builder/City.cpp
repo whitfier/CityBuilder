@@ -263,3 +263,23 @@ void City::update(float dt) {
     earnings += commercial_revenue * commercial_tax;
     earnings += industrial_revenue * industrial_tax;
 }
+
+void City::increase_tile(Tile * tile_ptr)
+{
+	switch (tile_ptr->tile_type)
+	{
+	case Tile_type_e::RESIDENTIAL:
+		population++;
+		if (rand() % 2) {
+			employable++;
+			employment_pool++;
+		}
+		if (tile_ptr->population >= tile_ptr->max_pop_per_level * (tile_ptr->tile_variant + 1))
+			population_pool++;
+		else
+			tile_ptr->population++;
+		break;
+	default:
+		break;
+	}
+}

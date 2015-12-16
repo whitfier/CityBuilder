@@ -18,7 +18,7 @@ enum class Action_state_e { NONE, PANNING, SELECTING };
 
 class Game_state_editor : public Game_state {
 public:
-    Game_state_editor(std::shared_ptr<Game> game_ptr);
+    Game_state_editor(std::shared_ptr<Game> game_ptr, bool new_game);
     
     void draw(const float dt) override;
     
@@ -33,6 +33,8 @@ private:
     sf::View game_view;
     sf::View gui_view;
     City city;
+	sf::Vector2f selection_start_pos;
+	sf::Vector2f selection_end_pos;
     sf::Vector2i selection_start;
     sf::Vector2i selection_end;
     Tile* current_tile;

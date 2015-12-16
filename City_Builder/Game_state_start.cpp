@@ -22,7 +22,8 @@ Game_state_start::Game_state_start(shared_ptr<Game> game_ptr)
     view.setCenter(pos);
     
     gui_system.emplace("menu", GUI(sf::Vector2f(192, 32), 4, false, game_ptr->stylesheets.at("button"),
-                                        { std::make_pair("Load Game", "load_game") }));
+	{ std::make_pair("Load Game", "load_game"),
+		std::make_pair("New Game", "new_game") }));
     
     gui_system.at("menu").setPosition(pos);
     gui_system.at("menu").setOrigin(96, 32 * 1/2);
@@ -74,15 +75,15 @@ void Game_state_start::handle_input() {
             case sf::Event::MouseButtonPressed:
                 if(event.mouseButton.button == sf::Mouse::Left) {
                     std::string msg = gui_system.at("menu").activate(mouse_pos);
-                    if(msg == "load_game")
-                        load_game();
+					if (msg == "load_game")
+						load_game(false);
+					else if (msg == "new_game")
+						load_game(true);
                 }
                 break;
             case sf::Event::KeyPressed:
                 if (event.key.code == sf::Keyboard::Escape)
                     game_ptr->window.close();
-                else if (event.key.code == sf::Keyboard::Space)
-                    load_game();
                 break;
             default:
                 break;
@@ -90,7 +91,7 @@ void Game_state_start::handle_input() {
     }
 }
 
-void Game_state_start::load_game() {
+void Game_state_start::load_game(bool new_game) {
     auto game_ptr = get_game_ptr();
-    game_ptr->push_state(make_shared<Game_state_editor>(game_ptr));
+    game_ptr->push_state(make_shared<Game_state_editor>(game_ptr, new_game));
 }
