@@ -19,6 +19,7 @@ std::string tile_type_to_str(Tile_type_e type);
 
 class Tile {
 public:
+    Tile() {}
     Tile(const unsigned int tile_size, const unsigned int height, sf::Texture& texture,
          const std::vector<Animation>& animations,
          const Tile_type_e tile_type_, const unsigned int cost_, const unsigned int max_pop_per_level_,
@@ -49,13 +50,13 @@ public:
     float stored_goods;             // Goods stored
     Tile_type_e tile_type;
     sf::Sprite sprite;
+    unsigned int max_pop_per_level; // Maximum population per growth stage / tile variant
+    float production;               // Production output per customer/worker per day, either monetary or goods
+    unsigned int cost;              // Placement cost of the tile
 
 private:
     Animation_handler anim_handler;
-    unsigned int cost;              // Placement cost of the tile
-    unsigned int max_pop_per_level; // Maximum population per growth stage / tile variant
     unsigned int max_levels;        // Maximum number of building levels
-    float production;               // Production output per customer/worker per day, either monetary or goods
 };
 
 #endif /* Tile_h */

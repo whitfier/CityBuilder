@@ -56,12 +56,12 @@ public:
     // 0 = Deselected, 1 = Selected, 2 = Invalid
     std::vector<char> selected;
     unsigned int num_selected;
+    std::vector<int> resources;
+    unsigned int numSelected;
 
 private:
-    std::vector<int> resources;
     
     
-    unsigned int numSelected;
     
     unsigned int num_regions[1];
     

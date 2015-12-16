@@ -23,7 +23,7 @@ void Animation_handler::update(const float dt) {
     int old_frame = static_cast<int>(time / duration);
     if (new_frame > old_frame) {
         // Adjust for looping
-        new_frame %= animations[current_animation].getLength();
+        new_frame %= animations[current_animation].get_length();
         
         // Set the sprite to the new frame
         sf::IntRect rect = frame_size;
@@ -36,7 +36,7 @@ void Animation_handler::update(const float dt) {
     time += dt;
     
     // Adjust for looping
-    if(time > duration * animations[current_animation].getLength())
+    if(time > duration * animations[current_animation].get_length())
         time = 0.0f;
 }
 

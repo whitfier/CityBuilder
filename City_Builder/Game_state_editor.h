@@ -10,7 +10,8 @@
 #define Game_state_editor_h
 
 #include "Game_state.h"
-#include "Map.h"
+#include "City.h"
+#include "GUI.h"
 #include <SFML/Graphics.hpp>
 
 enum class Action_state_e { NONE, PANNING, SELECTING };
@@ -31,10 +32,11 @@ private:
     float zoom_level;
     sf::View game_view;
     sf::View gui_view;
-    Map map;
+    City city;
     sf::Vector2i selection_start;
     sf::Vector2i selection_end;
     Tile* current_tile;
+    std::map<std::string, GUI> gui_system;
 };
 
 #endif /* Game_state_editor_h */

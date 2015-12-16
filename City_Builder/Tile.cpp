@@ -44,6 +44,7 @@ string tile_type_to_str(Tile_type_e type)
         case Tile_type_e::GRASS:        return "Flatten";
         case Tile_type_e::FOREST:       return "Forest";
         case Tile_type_e::WATER:        return "Water";
+        case Tile_type_e::ROAD:         return "Road";
         case Tile_type_e::RESIDENTIAL:  return "Residential Zone";
         case Tile_type_e::COMMERCIAL:   return "Commercial Zone";
         case Tile_type_e::INDUSTRIAL:   return "Industrial Zone";
