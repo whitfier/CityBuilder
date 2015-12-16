@@ -11,7 +11,11 @@
 
 using std::make_shared; using std::shared_ptr;
 
+#ifdef _MSC_VER
+int WinMain() {
+#else
 int main() {
+#endif
     auto game_ptr = make_shared<Game>();
     game_ptr->push_state(make_shared<Game_state_start>(game_ptr));
     game_ptr->game_loop();

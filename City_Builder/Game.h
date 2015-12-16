@@ -15,6 +15,7 @@
 #include <SFML/Graphics.hpp>
 #include <stack>
 #include <map>
+#include <memory>
 
 class Game_state;
 

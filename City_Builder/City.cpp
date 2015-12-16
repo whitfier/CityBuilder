@@ -66,7 +66,7 @@ void City::shuffle_tiles() {
     while (shuffled_tiles.size() < map.tiles.size())
         shuffled_tiles.push_back(0);
 
-    std::iota(shuffled_tiles.begin(), shuffled_tiles.end(), 1);
+    std::iota(shuffled_tiles.begin(), shuffled_tiles.end(), 0);
     std::random_shuffle(shuffled_tiles.begin(), shuffled_tiles.end());
 }
 
